@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../widgets/custom_app_bar.dart';
 import '../widgets/bottom_nav.dart';
+import 'orderdetail.dart';
 
 class MyOrdersScreen extends StatelessWidget {
   const MyOrdersScreen({super.key});
@@ -60,19 +61,29 @@ class MyOrdersScreen extends StatelessWidget {
           final status = order['status']?.toString() ?? "Unknown";
           final total = (order['total'] ?? 0).toDouble();
 
-          return Container(
-            padding: const EdgeInsets.all(14),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(18),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black.withOpacity(0.05),
-                  blurRadius: 12,
-                  offset: const Offset(0, 6),
-                ),
-              ],
-            ),
+return InkWell(
+  borderRadius: BorderRadius.circular(18),
+  onTap: () {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (_) => OrderDetailScreen(order: order),
+      ),
+    );
+  },
+  child: Container(
+    padding: const EdgeInsets.all(14),
+    decoration: BoxDecoration(
+      color: Colors.white,
+      borderRadius: BorderRadius.circular(18),
+      boxShadow: [
+        BoxShadow(
+          color: Colors.black.withOpacity(0.05),
+          blurRadius: 12,
+          offset: const Offset(0, 6),
+        ),
+      ],
+    ),
             child: Column(
               children: [
 
@@ -149,7 +160,8 @@ class MyOrdersScreen extends StatelessWidget {
                 ),
               ],
             ),
-          );
+          )
+);
         },
       ),
       bottomNavigationBar: BottomNav(

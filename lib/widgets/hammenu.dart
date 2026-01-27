@@ -1,4 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:zala/screens/aboutus.dart';
+import 'package:zala/screens/contactus.dart';
+import 'package:zala/screens/feedback.dart';
+import 'package:zala/screens/home_screen.dart';
+import 'package:zala/screens/myorders.dart';
+import 'package:zala/screens/profile.dart';
+import 'package:zala/screens/stores.dart';
+import 'package:zala/screens/wishlist.dart';
 
 class HamMenu extends StatefulWidget {
   const HamMenu({super.key});
@@ -19,6 +27,7 @@ class _HamMenuState extends State<HamMenu> with SingleTickerProviderStateMixin {
     MenuItem("Wishlist", Icons.favorite_border),
     MenuItem("My Orders", Icons.receipt_long_outlined),
     MenuItem("Profile", Icons.person_outline),
+    MenuItem("About Us", Icons.info_outline),
     MenuItem("Feedback", Icons.feedback_outlined),
     MenuItem("Contact Us", Icons.support_agent_outlined),
   ];
@@ -45,13 +54,52 @@ class _HamMenuState extends State<HamMenu> with SingleTickerProviderStateMixin {
     super.dispose();
   }
 
-  void onMenuTap(int index) {
-    setState(() {
-      selectedIndex = index;
-    });
+void onMenuTap(int index) {
+  setState(() {
+    selectedIndex = index;
+  });
 
-    print("Tapped: ${menuItems[index].title}");
+  Navigator.pop(context); // close sidebar first
+
+  Widget? targetScreen;
+
+  switch (menuItems[index].title) {
+    case "Home":
+      targetScreen = const HomeScreen();
+      break;
+    case "Stores":
+      targetScreen = const StoresScreen();
+      break;
+    case "Wishlist":
+      targetScreen = const WishlistScreen();
+      break;
+    case "My Orders":
+      targetScreen = const MyOrdersScreen();
+      break;
+    case "Profile":
+      targetScreen = const ProfileScreen();
+      break;
+    case "Feedback":
+      targetScreen = const FeedbackScreen();
+      break;
+    case "Contact Us":
+      targetScreen = const ContactUsScreen();
+      break;
+        case "About Us":
+      targetScreen = const AboutUsScreen();
+      break;
+    default:
+      targetScreen = null;
   }
+
+  if (targetScreen != null) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (_) => targetScreen!),
+    );
+  }
+}
+
 
   @override
   Widget build(BuildContext context) {

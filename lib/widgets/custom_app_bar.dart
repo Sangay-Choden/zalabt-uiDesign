@@ -98,6 +98,7 @@
 
 import 'package:flutter/material.dart';
 import 'hammenu.dart';
+import '../screens/cart.dart'; 
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
@@ -165,10 +166,18 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           padding: const EdgeInsets.only(right: 12),
           child: Stack(
             children: [
-              IconButton(
-                icon: const Icon(Icons.shopping_cart_outlined, color: Colors.black),
-                onPressed: () {},
-              ),
+  IconButton(
+  icon: const Icon(Icons.shopping_cart_outlined, color: Colors.black),
+  onPressed: () {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (_) => const CartScreen(),
+      ),
+    );
+  },
+),
+
               Positioned(
                 right: 6,
                 top: 6,
