@@ -16,10 +16,47 @@
 // class _HomeScreenState extends State<HomeScreen> {
 //   int currentIndex = 0;
 
+//   // 🔹 Top products slider
 //   final topProducts = [
 //     {"image": "assets/headphone1.png", "title": "Wireless Headset", "price": "Nu. 2,500"},
 //     {"image": "assets/laptop1.png", "title": "Gaming Laptop", "price": "Nu. 85,000"},
 //     {"image": "assets/watch1.png", "title": "Smart Watch", "price": "Nu. 4,200"},
+//   ];
+
+//   // 🔹 Products list
+//   final products = [
+//     {
+//       "image": "assets/w1.jpg",
+//       "title": "Dog Food Premium",
+//       "category": "Pet Food",
+//       "price": "Nu. 850",
+//     },
+//     {
+//       "image": "assets/headphone.jpg",
+//       "title": "Cat Food",
+//       "category": "Pet Food",
+//       "price": "Nu. 780",
+//     },
+//     {
+//       "image": "assets/w1.jpg",
+//       "title": "Pet Shampoo",
+//       "category": "Accessories",
+//       "price": "Nu. 430",
+//     },
+//   ];
+
+//   // 🔹 Purchased products
+//   final purchasedProducts = [
+//     {
+//       "image": "assets/headphone.jpg",
+//       "title": "Wireless Headset",
+//       "price": "Nu. 2,500",
+//     },
+//     {
+//       "image": "assets/watch1.png",
+//       "title": "Smart Watch",
+//       "price": "Nu. 4,200",
+//     },
 //   ];
 
 //   final bool hasPurchasedSales = true;
@@ -63,9 +100,11 @@
 //               height: 260,
 //               child: ListView.builder(
 //                 scrollDirection: Axis.horizontal,
-//                 itemCount: 6,
+//                 shrinkWrap: true,
+//                 physics: const BouncingScrollPhysics(),
+//                 itemCount: products.length,
 //                 itemBuilder: (context, index) {
-//                   return const _ProductCard();
+//                   return _ProductCard(product: products[index]);
 //                 },
 //               ),
 //             ),
@@ -80,9 +119,11 @@
 //                     height: 260,
 //                     child: ListView.builder(
 //                       scrollDirection: Axis.horizontal,
-//                       itemCount: 3,
+//                       shrinkWrap: true,
+//                       physics: const BouncingScrollPhysics(),
+//                       itemCount: purchasedProducts.length,
 //                       itemBuilder: (context, index) {
-//                         return const _PurchasedCard();
+//                         return _PurchasedCard(product: purchasedProducts[index]);
 //                       },
 //                     ),
 //                   )
@@ -97,6 +138,8 @@
 //       ),
 //     );
 //   }
+
+//   // ================= UI HELPERS =================
 
 //   Widget _search() => Container(
 //         padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -128,9 +171,8 @@
 //         ],
 //       );
 
-//   Widget _emptyPurchaseState() => Container(
+//   Widget _emptyPurchaseState() => Padding(
 //         padding: const EdgeInsets.symmetric(vertical: 40),
-//         alignment: Alignment.center,
 //         child: Column(
 //           children: const [
 //             Icon(Icons.shopping_bag_outlined, size: 48, color: Colors.grey),
@@ -147,7 +189,9 @@
 // // ================= PRODUCT CARD =================
 
 // class _ProductCard extends StatefulWidget {
-//   const _ProductCard();
+//   final Map<String, String> product;
+
+//   const _ProductCard({required this.product});
 
 //   @override
 //   State<_ProductCard> createState() => _ProductCardState();
@@ -170,9 +214,9 @@
 //           margin: const EdgeInsets.only(right: 14),
 //           padding: const EdgeInsets.all(12),
 //           decoration: BoxDecoration(
-//             color: Colors.white, // ✅ white bg
+//             color: Colors.white,
 //             borderRadius: BorderRadius.circular(16),
-//             border: Border.all(color: Colors.grey.shade300), // ✅ light grey border
+//             border: Border.all(color: Colors.grey.shade300),
 //             boxShadow: [
 //               BoxShadow(
 //                 color: Colors.grey.withOpacity(0.08),
@@ -188,26 +232,26 @@
 //                 child: ClipRRect(
 //                   borderRadius: BorderRadius.circular(12),
 //                   child: Image.asset(
-//                     "assets/w1.jpg",
+//                     widget.product["image"]!,
 //                     fit: BoxFit.cover,
 //                     width: double.infinity,
 //                   ),
 //                 ),
 //               ),
 //               const SizedBox(height: 10),
-//               const Text(
-//                 "Dog Food Premium",
-//                 style: TextStyle(fontWeight: FontWeight.bold),
+//               Text(
+//                 widget.product["title"]!,
+//                 style: const TextStyle(fontWeight: FontWeight.bold),
 //               ),
 //               const SizedBox(height: 4),
-//               const Text(
-//                 "Pet Food",
-//                 style: TextStyle(fontSize: 12, color: Colors.grey),
+//               Text(
+//                 widget.product["category"]!,
+//                 style: const TextStyle(fontSize: 12, color: Colors.grey),
 //               ),
 //               const SizedBox(height: 6),
-//               const Text(
-//                 "Nu. 850",
-//                 style: TextStyle(fontWeight: FontWeight.w600),
+//               Text(
+//                 widget.product["price"]!,
+//                 style: const TextStyle(fontWeight: FontWeight.w600),
 //               ),
 //             ],
 //           ),
@@ -220,7 +264,9 @@
 // // ================= PURCHASED CARD =================
 
 // class _PurchasedCard extends StatelessWidget {
-//   const _PurchasedCard();
+//   final Map<String, String> product;
+
+//   const _PurchasedCard({required this.product});
 
 //   @override
 //   Widget build(BuildContext context) {
@@ -229,9 +275,9 @@
 //       margin: const EdgeInsets.only(right: 14),
 //       padding: const EdgeInsets.all(12),
 //       decoration: BoxDecoration(
-//         color: Colors.white, // ✅ white bg
+//         color: Colors.white,
 //         borderRadius: BorderRadius.circular(16),
-//         border: Border.all(color: Colors.grey.shade300), // ✅ light grey border
+//         border: Border.all(color: Colors.grey.shade300),
 //         boxShadow: [
 //           BoxShadow(
 //             color: Colors.grey.withOpacity(0.08),
@@ -248,7 +294,7 @@
 //                 ClipRRect(
 //                   borderRadius: BorderRadius.circular(12),
 //                   child: Image.asset(
-//                     "assets/headphone.jpg",
+//                     product["image"]!,
 //                     fit: BoxFit.cover,
 //                     width: double.infinity,
 //                   ),
@@ -259,7 +305,7 @@
 //                   child: Container(
 //                     padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
 //                     decoration: BoxDecoration(
-//                       color: const Color( 0xFFB00020),
+//                       color: const Color(0xFFB00020),
 //                       borderRadius: BorderRadius.circular(8),
 //                     ),
 //                     child: const Text(
@@ -276,14 +322,14 @@
 //             ),
 //           ),
 //           const SizedBox(height: 10),
-//           const Text(
-//             "Dog Food Premium",
-//             style: TextStyle(fontWeight: FontWeight.bold),
+//           Text(
+//             product["title"]!,
+//             style: const TextStyle(fontWeight: FontWeight.bold),
 //           ),
 //           const SizedBox(height: 6),
-//           const Text(
-//             "Nu. 850",
-//             style: TextStyle(
+//           Text(
+//             product["price"]!,
+//             style: const TextStyle(
 //               fontWeight: FontWeight.w600,
 //               color: Colors.grey,
 //             ),
@@ -293,6 +339,8 @@
 //     );
 //   }
 // }
+
+
 
 
 
@@ -362,26 +410,29 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: const Color(0xFFF7F8FA),
       appBar: const CustomAppBar(),
 
       body: SingleChildScrollView(
-        padding: const EdgeInsets.all(16),
+        physics: const BouncingScrollPhysics(),
+        padding: const EdgeInsets.fromLTRB(16, 16, 16, 24),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             _search(),
-            const SizedBox(height: 20),
+            const SizedBox(height: 22),
 
             _header("Top Products"),
+            const SizedBox(height: 12),
             ProductSlider(products: topProducts),
 
-            const SizedBox(height: 24),
+            const SizedBox(height: 28),
 
-            _header("Category"),
+            _header("Categories"),
+            const SizedBox(height: 12),
             const CategoryRow(),
 
-            const SizedBox(height: 30),
+            const SizedBox(height: 32),
 
             _header(
               "Products",
@@ -392,13 +443,13 @@ class _HomeScreenState extends State<HomeScreen> {
                 );
               },
             ),
-            const SizedBox(height: 12),
+
+            const SizedBox(height: 14),
 
             SizedBox(
               height: 260,
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
-                shrinkWrap: true,
                 physics: const BouncingScrollPhysics(),
                 itemCount: products.length,
                 itemBuilder: (context, index) {
@@ -407,17 +458,16 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
 
-            const SizedBox(height: 30),
+            const SizedBox(height: 34),
 
             _header("Purchased Sales"),
-            const SizedBox(height: 12),
+            const SizedBox(height: 14),
 
             hasPurchasedSales
                 ? SizedBox(
                     height: 260,
                     child: ListView.builder(
                       scrollDirection: Axis.horizontal,
-                      shrinkWrap: true,
                       physics: const BouncingScrollPhysics(),
                       itemCount: purchasedProducts.length,
                       itemBuilder: (context, index) {
@@ -437,36 +487,83 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  // ================= UI HELPERS =================
+  // ================= MODERN SEARCH BAR =================
 
   Widget _search() => Container(
-        padding: const EdgeInsets.symmetric(horizontal: 16),
+        padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 6),
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(14),
-          border: Border.all(color: Colors.grey.shade300),
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(18),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.04),
+              blurRadius: 12,
+              offset: const Offset(0, 6),
+            ),
+          ],
         ),
-        child: const TextField(
-          decoration: InputDecoration(
-            hintText: "Search",
-            border: InputBorder.none,
-            icon: Icon(Icons.search),
-          ),
+        child: Row(
+          children: [
+            const Icon(Icons.search, color: Colors.grey),
+            const SizedBox(width: 10),
+            const Expanded(
+              child: TextField(
+                decoration: InputDecoration(
+                  hintText: "What are you looking for?",
+                  border: InputBorder.none,
+                ),
+              ),
+            ),
+            Container(
+              padding: const EdgeInsets.all(8),
+              decoration: BoxDecoration(
+                color: const Color(0xFFF1F3F6),
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: const Icon(Icons.tune, size: 18),
+            ),
+          ],
         ),
       );
 
-  Widget _header(String title, {VoidCallback? onTap}) => Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Text(
-            title,
-            style: const TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
-          ),
-          if (onTap != null)
-            TextButton(
-              onPressed: onTap,
-              child: const Text("See all"),
+  // ================= MODERN SECTION HEADER =================
+
+  Widget _header(String title, {VoidCallback? onTap}) => Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 2),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              title,
+              style: const TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.w700,
+                letterSpacing: 0.2,
+              ),
             ),
-        ],
+            if (onTap != null)
+              GestureDetector(
+                onTap: onTap,
+                child: Row(
+                  children: const [
+                    Text(
+                      "See all",
+                      style: TextStyle(
+                        color: Color(0xFF6DBE45),
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                    SizedBox(width: 4),
+                    Icon(
+                      Icons.arrow_forward_ios,
+                      size: 12,
+                      color: Color(0xFF6DBE45),
+                    ),
+                  ],
+                ),
+              ),
+          ],
+        ),
       );
 
   Widget _emptyPurchaseState() => Padding(
@@ -484,7 +581,7 @@ class _HomeScreenState extends State<HomeScreen> {
       );
 }
 
-// ================= PRODUCT CARD =================
+// ================= PRODUCT CARD (UNCHANGED) =================
 
 class _ProductCard extends StatefulWidget {
   final Map<String, String> product;
@@ -559,7 +656,7 @@ class _ProductCardState extends State<_ProductCard> {
   }
 }
 
-// ================= PURCHASED CARD =================
+// ================= PURCHASED CARD (UNCHANGED) =================
 
 class _PurchasedCard extends StatelessWidget {
   final Map<String, String> product;

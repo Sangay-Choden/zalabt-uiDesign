@@ -20,6 +20,7 @@ class _AllProductScreenState extends State<AllProductScreen> {
       "type": "Wearables",
       "stock": 8,
       "price": "Nu. 4,200",
+      "store": "Bhutan Express",
     },
     {
       "image": "assets/laptop.png",
@@ -28,6 +29,7 @@ class _AllProductScreenState extends State<AllProductScreen> {
       "type": "Computers",
       "stock": 5,
       "price": "Nu. 85,000",
+      "store": "Bhutan Express",
     },
     {
       "image": "assets/headphone.jpg",
@@ -36,6 +38,7 @@ class _AllProductScreenState extends State<AllProductScreen> {
       "type": "Hardware",
       "stock": 42,
       "price": "Nu. 490.00",
+      "store": "Bhutan Express",
     },
     {
       "image": "assets/headphone.jpg",
@@ -44,6 +47,7 @@ class _AllProductScreenState extends State<AllProductScreen> {
       "type": "Hardware",
       "stock": 15,
       "price": "Nu. 2,500",
+      "store": "Bhutan Express",
     },
     {
       "image": "assets/watch.jpg",
@@ -52,6 +56,7 @@ class _AllProductScreenState extends State<AllProductScreen> {
       "type": "Wearables",
       "stock": 8,
       "price": "Nu. 4,200",
+      "store": "Bhutan Express",
     },
     {
       "image": "assets/laptop.png",
@@ -60,6 +65,7 @@ class _AllProductScreenState extends State<AllProductScreen> {
       "type": "Computers",
       "stock": 5,
       "price": "Nu. 85,000",
+      "store": "Bhutan Express",
     },
         {
       "image": "assets/watch.jpg",
@@ -68,6 +74,7 @@ class _AllProductScreenState extends State<AllProductScreen> {
       "type": "Wearables",
       "stock": 8,
       "price": "Nu. 4,200",
+      "store": "Bhutan Express",
     },
     {
       "image": "assets/laptop.png",
@@ -76,6 +83,7 @@ class _AllProductScreenState extends State<AllProductScreen> {
       "type": "Computers",
       "stock": 5,
       "price": "Nu. 85,000",
+      "store": "Bhutan Express",
     },
   ];
 
@@ -152,6 +160,8 @@ class _AllProductScreenState extends State<AllProductScreen> {
     final String category = product["category"];
     final int stock = product["stock"];
     final String price = product["price"];
+    final String store = product["store"];
+
 
     return Container(
       decoration: BoxDecoration(

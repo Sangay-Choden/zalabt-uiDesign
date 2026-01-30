@@ -26,6 +26,24 @@ class OrderDetailScreen extends StatelessWidget {
       backgroundColor: const Color(0xFFF6F7FB),
       appBar: const CustomAppBar(title: "Order Details"),
 
+// appBar: AppBar(
+//   backgroundColor: Colors.white,
+//   elevation: 0,
+//   leading: IconButton(
+//     icon: const Icon(Icons.arrow_back_ios, size: 18),
+//     onPressed: () => Navigator.pop(context),
+//   ),
+//   centerTitle: true,
+//   title: const Text(
+//     "Order Details",
+//     style: TextStyle(
+//       color: Colors.black,
+//       fontWeight: FontWeight.w600,
+//     ),
+//   ),
+// ),
+
+
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16),
         child: Column(
@@ -85,14 +103,14 @@ class OrderDetailScreen extends StatelessWidget {
                 children: [
                   ClipRRect(
                     borderRadius: BorderRadius.circular(14),
-                    child: Image.network(
-                      order['image'],
-                      width: 80,
-                      height: 80,
-                      fit: BoxFit.cover,
-                      errorBuilder: (_, __, ___) =>
-                          Container(width: 80, height: 80, color: Colors.grey[300]),
-                    ),
+                    child: Image.asset(
+                        order['image'],
+                        width: 80,
+                        height: 80,
+                        fit: BoxFit.cover,
+                        errorBuilder: (_, __, ___) =>
+                            Container(width: 80, height: 80, color: Colors.grey[300]),
+                      ),
                   ),
                   const SizedBox(width: 14),
                   Expanded(

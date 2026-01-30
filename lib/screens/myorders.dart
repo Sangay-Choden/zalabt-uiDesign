@@ -9,7 +9,7 @@ class MyOrdersScreen extends StatelessWidget {
   final List<Map<String, dynamic>> orders = const [
     {
       "product": "Wood Chair",
-      "image": "https://via.placeholder.com/100",
+      "image": "assets/headphone.jpg",
       "qty": 1,
       "orderNo": "17400640128815214",
       "payment": "Payment on Delivery",
@@ -19,7 +19,7 @@ class MyOrdersScreen extends StatelessWidget {
     },
     {
       "product": "Sofa Chair",
-      "image": "https://via.placeholder.com/100",
+      "image": "assets/watch.jpg",
       "qty": 2,
       "orderNo": "1730894975833493",
       "payment": "Payment on Delivery",
@@ -93,14 +93,14 @@ return InkWell(
                   children: [
                     ClipRRect(
                       borderRadius: BorderRadius.circular(12),
-                      child: Image.network(
-                        image,
-                        width: 70,
-                        height: 70,
-                        fit: BoxFit.cover,
-                        errorBuilder: (_, __, ___) =>
-                            Container(width: 70, height: 70, color: Colors.grey[300]),
-                      ),
+                      child:Image.asset(
+                                    image,
+                                    width: 70,
+                                    height: 70,
+                                    fit: BoxFit.cover,
+                                    errorBuilder: (_, __, ___) =>
+                                        Container(width: 70, height: 70, color: Colors.grey[300]),
+                                  ),
                     ),
                     const SizedBox(width: 12),
 
@@ -155,7 +155,7 @@ return InkWell(
                     ),
 
                     if (status.toLowerCase() == 'delivered')
-                      _actionButton("Feedback", Icons.star, Colors.green),
+                      _actionButton("Feedback", Icons.star, const Color.fromARGB(255, 133, 188, 134)),
                   ],
                 ),
               ],
