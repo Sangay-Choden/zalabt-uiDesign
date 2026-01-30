@@ -175,10 +175,10 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
 
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: Colors.white,
+        backgroundColor:Color.fromARGB(255, 246, 235, 221) ,
         leading: const BackButton(color: Colors.black),
         title: const Text("Checkout",
-            style: TextStyle(color: Colors.black)),
+            style: TextStyle(color: Colors.black, fontSize: 18)),
       ),
 
       body: ListView(

@@ -82,6 +82,10 @@ flutter:
     - assets/w1.jpg
     - assets/w3.jpg
     - assets/bg.jpg
+    - assets/bgbg.jpg
+    - assets/bg2.jpg
+    - assets/bg3.jpg
+    - assets/bg4.jpg
     - assets/webcam.webp
     - assets/webcam2.jpg
 

@@ -86,14 +86,14 @@ class BottomNav extends StatelessWidget {
               size: 22,
               color: active
                   ? const Color.fromARGB(255, 241, 227, 209)
-                  : const Color(0xFF232323),
+                  : const Color.fromARGB(255, 61, 61, 61),
             ),
             if (active) ...[
               const SizedBox(width: 6),
               Text(
                 label,
                 style: const TextStyle(
-                  color: Color.fromARGB(255, 241, 227, 209),
+                  color: Color.fromARGB(255, 246, 235, 221),
                   fontSize: 13,
                   fontWeight: FontWeight.w600,
                 ),
@@ -112,7 +112,7 @@ class BottomNav extends StatelessWidget {
       child: Container(
         height: 64,
         decoration: BoxDecoration(
-          color: const Color.fromARGB(255, 241, 227, 209),
+          color: const Color.fromARGB(255, 255, 248, 239),
           borderRadius: BorderRadius.circular(32),
         ),
         child: Row(

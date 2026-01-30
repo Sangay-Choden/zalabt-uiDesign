@@ -1,4 +1,3 @@
-// TODO Implement this library.
 import 'package:flutter/material.dart';
 
 class AnimatedCategoryItem extends StatelessWidget {
@@ -19,12 +18,12 @@ class AnimatedCategoryItem extends StatelessWidget {
           width: 60,
           height: 60,
           decoration: BoxDecoration(
-            color: const Color.fromARGB(255, 249, 244, 237),
+            color: const Color.fromARGB(255, 255, 255, 255),
             shape: BoxShape.circle,
           ),
-          child: Icon(icon, size: 26),
+          child: Icon(icon, size: 24),
         ),
-        const SizedBox(height: 8),
+        const SizedBox(height: 1),
         SizedBox(
           width: 70,
           child: Text(

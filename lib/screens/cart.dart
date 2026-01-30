@@ -332,17 +332,17 @@ class _CartScreenState extends State<CartScreen> {
       backgroundColor: const Color(0xFFF6F7FB),
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: Colors.white,
+        backgroundColor: Color.fromARGB(255, 246, 235, 221),
         leading: const BackButton(color: Colors.black),
         title: Text(
           "Shopping Cart (${cartItems.length})",
-          style: const TextStyle(color: Colors.black),
+          style: const TextStyle(color: Colors.black , fontSize: 18),
         ),
         actions: [
           TextButton(
             onPressed: () => setState(() => cartItems.clear()),
             child: const Text("Clear All",
-                style: TextStyle(color: Colors.orange)),
+                style: TextStyle(color: Color.fromARGB(255, 55, 35, 5))),
           ),
         ],
       ),
@@ -540,7 +540,7 @@ class _CartScreenState extends State<CartScreen> {
         padding: const EdgeInsets.all(12),
         child: ElevatedButton(
           style: ElevatedButton.styleFrom(
-            backgroundColor: Colors.orange,
+            backgroundColor: const Color.fromARGB(255, 241, 208, 158),
             minimumSize: const Size(double.infinity, 54),
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),

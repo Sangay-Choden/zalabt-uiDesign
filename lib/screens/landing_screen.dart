@@ -238,7 +238,7 @@ class _LandingScreenState extends State<LandingScreen>
                                   height: 54,
                                   child: ElevatedButton(
                                     style: ElevatedButton.styleFrom(
-                                      backgroundColor: Colors.black,
+                                      backgroundColor: Color.fromARGB(255, 246, 235, 221),
                                       shape: RoundedRectangleBorder(
                                         borderRadius:
                                             BorderRadius.circular(16),
@@ -259,7 +259,7 @@ class _LandingScreenState extends State<LandingScreen>
                                       style: const TextStyle(
                                         fontSize: 17,
                                         fontWeight: FontWeight.w700,
-                                        color: Colors.white,
+                                        color: Color.fromARGB(255, 62, 47, 35),
                                       ),
                                     ),
                                   ),
