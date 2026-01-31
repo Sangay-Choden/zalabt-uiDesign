@@ -295,7 +295,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
             children: [
               IconButton(
                 icon:
-                    const Icon(Icons.shopping_cart_outlined, color: Colors.black),
+                    const Icon(Icons.shopping_bag_outlined, color: Colors.black),
                 onPressed: () {
                   Navigator.push(
                     context,

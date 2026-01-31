@@ -46,7 +46,7 @@ class FeedbackScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF8F4EB),
+      backgroundColor: const Color.fromARGB(255, 255, 255, 255),
       appBar: const CustomAppBar(title: "Feedback"),
 
       body: ListView.builder(

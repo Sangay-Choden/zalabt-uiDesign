@@ -88,7 +88,7 @@ class _HeaderCard extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.all(8),
               child: Image.asset(
-                "assets/zala_logo.png", // 🔁 replace with your actual logo path
+                "assets/zala.png", // 🔁 replace with your actual logo path
                 fit: BoxFit.contain,
               ),
             ),
